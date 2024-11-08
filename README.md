@@ -1,7 +1,5 @@
 # PIE : Optimisation d'un traitement anti-calcaire
 
-Ce projet informatique a été réalisé dans le cadre d'un projet de groupe d'élèves de l'ENSTA Paris en deuxième année. Le but de ce projet est d'optimiser un traitement anti-calcaire d'une entreprise extérieure et d'être en capacité de conclure quant à l'efficacité du de ce test.
+Ce projet informatique a été réalisé par un groupe d'élèves de deuxième année de l'ENSTA Paris dans le cadre de leur formation. L'objectif de ce travail est d'optimiser un traitement anti-calcaire pour une entreprise partenaire et d’évaluer précisément l’efficacité de ce dernier.
 
-Le code informatique prend pour objet une image d'une goutte d'eau qui tombe sur une paroie recouverte de traitement anti-calcaire. Il doit renvoyer, via une interface numérique, la valeur de l'angle de la tangente du point de contact. Le tout est codé en python.
-
-A partir d'une série de valeurs, nous sommes alors en mesure de conclure quant au test.
+Le programme développé utilise des images d'une goutte d'eau tombant sur une surface traitée. Il calcule la valeur de l'angle de tangent au point de contact par rappor à la surface et renvoie cette valeur par le biais d'une interface numérique. Codé en Python, ce programme permet, à partir d’une série de mesures, d’établir des conclusions précises sur les performances du traitement anti-calcaire testé.
