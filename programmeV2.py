@@ -107,8 +107,6 @@ def calculerTangentes(ellipse, baseGoutte):
         "intersectionDroite": (abscisseDroite, ordonneeBase)
     }
 
-import cv2
-
 # 🔹 Étape 6 : Dessiner les tangentes sur l'image
 def dessinerTangentes(image, resultatsTangentes, ellipse):
     # Récupération des résultats calculés
@@ -157,7 +155,6 @@ def dessinerCourbe(image, f, x_min, x_max, pas=1, couleur=(0, 255, 0)):
 
     if len(points) > 1:
         cv2.polylines(image, [np.array(points, np.int32)], isClosed=False, color=couleur, thickness=épaisseur)
-
 
 def dessinerBaseGoutte(image, baseGauche, baseDroite):
     """Trace la ligne représentant la base de la goutte."""
