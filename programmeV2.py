@@ -34,7 +34,7 @@ def ajusterEllipse(image, contourGoutte):
     cv2.ellipse(image, ellipse, (255, 0, 0), épaisseur)
     return ellipse
 
-# Étape 4 : Identifier la base de la goutte (sol)
+#  🚩 Étape 4 : Identifier la base de la goutte (sol)
 def trouverBaseGoutte(image, contourGoutte, ellipse):
     (xE, yE), (a, b), angle = ellipse
     x, y, largeur, hauteur = cv2.boundingRect(contourGoutte)
