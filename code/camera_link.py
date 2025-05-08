@@ -4,6 +4,11 @@ camera_index = 0
 
 def get_photo():
 	cam = cv2.VideoCapture(camera_index)
+	
+	if cam is None or not cam.isOpened():
+		print("Unable to open camera device")
+		return 0
+	
 	k = 0
 	while True:
 		ret, image = cam.read()
@@ -21,3 +26,4 @@ def get_photo():
 			k = 0
 	cam.release()
 	cv2.destroyAllWindows()
+	return 1
