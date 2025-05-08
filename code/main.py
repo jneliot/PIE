@@ -64,6 +64,44 @@ def interface():
             finally:
                 chargementAffichage.config(text="")
     
+    def prendrePhoto():
+        
+        test = cam.get_photo()
+        if(test == 0):
+            messagebox.showerror("Erreur", "Erreur de lien avec la camera")
+            return 0
+        cheminImage = "../cache/temp.jpg"
+        if cheminImage:
+            chargementAffichage.config(text="Traitement en cours...")
+            root.update()
+
+            try:
+                imageOriginale, imageContours = pre.pretraiterImage(cheminImage)
+                contourGoutte = pre.trouverPlusGrandContour(imageContours)
+                ellipse = pre.ajusterEllipse(imageOriginale, contourGoutte)
+                baseGoutte = pre.trouverBaseGoutte(imageOriginale, contourGoutte, ellipse)
+                tangentes = pre.calculerTangentes(ellipse, baseGoutte)
+
+                aff.dessinerTangentes(imageOriginale, tangentes, ellipse)
+                aff.dessinerBaseGoutte(imageOriginale, baseGoutte[0], baseGoutte[1])
+                aff.dessinerPoints(imageOriginale, [ellipse[0], baseGoutte[2], tangentes["intersectionGauche"], tangentes["intersectionDroite"]])
+
+                imageTK = ImageTk.PhotoImage(Image.fromarray(cv2.cvtColor(imageOriginale, cv2.COLOR_BGR2RGB)))
+                imageAffichage.config(image=imageTK)
+                imageAffichage.image = imageTK
+
+                angleGauche, angleDroit = -math.degrees(math.atan(tangentes['penteGauche'])), -math.degrees(math.atan(tangentes['penteDroite']))
+                angleValeursAffichage.config(text=f"{angleGauche:.2f}° | {angleDroit:.2f}°", fg="red")
+
+                cache.pre_cache()
+                cv2.imwrite("../cache/temp1.png", imageOriginale)
+                cache.update_cache([angleGauche, angleDroit])
+
+            except Exception as e:
+                messagebox.showerror("Erreur", f"Une erreur est survenue : {e}")
+            finally:
+                chargementAffichage.config(text="")
+    
     def afficherImageCache():
         try:
             selection = listboxCache.curselection()
@@ -87,6 +125,7 @@ def interface():
             messagebox.showerror("Erreur", f"Une erreur est survenue : {e}")
     
     Button(root, text="Charger une image", font=("Arial", 12), command=choisirImage).pack(pady=20)
+    Button(root, text="Prendre une photo", font=("Arial", 12), command=prendrePhoto).pack(pady=20)
 
     # Ajout des autres labels nécessaires
     imageAffichage = Label(root)
