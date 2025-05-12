@@ -22,7 +22,7 @@ def dessinerTangentes(image, resultatsTangentes, ellipse):
     def h(x):
         return f(x)
     
-    dessinerCourbe(image, h, x_min=abscisseGauche, x_max=abscisseDroite, couleur=(255, 255, 255))
+    #dessinerCourbe(image, h, x_min=abscisseGauche, x_max=abscisseDroite, couleur=(255, 255, 255))
 
     def T(m, x, x0):
         return m*(x-x0)+ordonneeBase

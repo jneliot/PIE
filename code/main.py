@@ -56,7 +56,7 @@ def interface():
                 angleValeursAffichage.config(text=f"{angleGauche:.2f}° | {angleDroit:.2f}°", fg="red")
 
                 cache.pre_cache()
-                cv2.imwrite("../cache/temp1.png", imageOriginale)
+                cv2.imwrite("../cache/temp1.jpg", imageOriginale)
                 cache.update_cache([angleGauche, angleDroit])
 
             except Exception as e:
@@ -94,7 +94,7 @@ def interface():
                 angleValeursAffichage.config(text=f"{angleGauche:.2f}° | {angleDroit:.2f}°", fg="red")
 
                 cache.pre_cache()
-                cv2.imwrite("../cache/temp1.png", imageOriginale)
+                cv2.imwrite("../cache/temp1.jpg", imageOriginale)
                 cache.update_cache([angleGauche, angleDroit])
 
             except Exception as e:

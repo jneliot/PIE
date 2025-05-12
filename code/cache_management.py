@@ -1,6 +1,6 @@
 import os
 
-cache_path = "cache/"
+cache_path = "../cache/"
 
 
 
